@@ -13,7 +13,6 @@ public interface CustomerResponse {
 
     String getPhone();
 
-
     String getCountry();
 
     String getDates();

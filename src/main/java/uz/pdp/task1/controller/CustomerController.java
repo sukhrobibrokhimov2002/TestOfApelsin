@@ -71,11 +71,12 @@ public class CustomerController {
 
     @GetMapping("/customers_last_orders")
     public ResponseEntity<DataDto<List<CustomerResponse>>> getCustomerWithLatestOrder() {
-        ResponseEntity<DataDto<List<CustomerResponse>>> customerWithLatestOrder = customerService.getCustomerWithLatestOrder();
-        return customerWithLatestOrder;
+        return customerService.getCustomerWithLatestOrder();
     }
 
 
+
+//get number of orders by year
     @GetMapping("/number_of_products_in_year")
     public ResponseEntity<DataDto<List<OrdersByCountry>>> getNumberOfOrdersByCountry() {
         ResponseEntity<DataDto<List<OrdersByCountry>>> ordersByCountry = customerService.getOrdersByCountry();

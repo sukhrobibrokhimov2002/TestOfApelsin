@@ -3,6 +3,7 @@ package uz.pdp.task1.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import uz.pdp.task1.entity.Customer;
+import uz.pdp.task1.payload.CustomerResponseClass;
 import uz.pdp.task1.payload.response.CustomerResponse;
 import uz.pdp.task1.payload.response.OrdersByCountry;
 
@@ -23,7 +24,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
             "not in(select customer_id from orders where date>'2016-01-01' and date<'2016-12-31')", nativeQuery = true)
     List<Customer> getCustomerWhoNotMakeOrder();
 
-    @Query(value = "select  cs.name,cs.country,cs.phone, cast( max(ord.date) as varchar ) as dates from" +
+    @Query(value = "select cs.name,cs.country,cs.phone, cast(max(ord.date) as varchar) as dates from" +
             " orders ord join customer cs on cs.id=ord.customer_id " +
             "where ord.customer_id in(select distinct customer_id from orders)  \n" +
             "group by ord.customer_id,cs.name,cs.id", nativeQuery = true)
