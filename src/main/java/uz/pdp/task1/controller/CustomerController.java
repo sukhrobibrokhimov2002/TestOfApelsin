@@ -62,6 +62,7 @@ public class CustomerController {
     }
 
 
+    //customers who did not order anything
     @GetMapping("/customers_without_orders")
     public  ResponseEntity<DataDto<List<CustomerDto>>> getCusWithoutOrder( ) {
         ResponseEntity<DataDto<List<CustomerDto>>> customerWhoNotMakeOrder = customerService.getCustomerWhoNotMakeOrder();
